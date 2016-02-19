@@ -11,8 +11,12 @@ import java.util.ArrayList;
 
 public class ReadAndSave
 {
+    private static final String zipFilePath = "data/GTFS.zip";
+    private static final String destDirectory = "data/GTFS";
+
     public void readAndSave()
     {
+        UnzipUtility.unzip(zipFilePath,destDirectory);
         File[] listOfFiles = getFiles();
         try
         {
@@ -33,7 +37,7 @@ public class ReadAndSave
 
     public File[] getFiles()
     {
-        File folder = new File("data/GTFS");
+        File folder = new File(destDirectory);
         File[] listOfFiles = folder.listFiles();
         boolean error = false;
         for (File file : listOfFiles)
